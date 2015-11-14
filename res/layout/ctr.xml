@@ -1,0 +1,201 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="zfp.activity.c">
+
+    <zfp.config.PaintVedio
+        android:id="@+id/paintVedio"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <RadioButton
+        android:id="@+id/radioConn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="连接" />
+
+    <!--方向控制-->
+    <RelativeLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp">
+
+        <Button
+            android:id="@+id/btnForward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/forward" />
+        <!--android:text="前"-->
+
+        <Button
+            android:id="@+id/btnLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnForward"
+            android:background="@drawable/turnleft" />
+        <!--android:text="左"-->
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnForward"
+            android:layout_toRightOf="@+id/btnLeft"
+            android:background="@drawable/back" />
+        <!--android:text="后"-->
+
+
+        <Button
+            android:id="@+id/btnRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnForward"
+            android:layout_toRightOf="@+id/btnBack"
+            android:background="@drawable/turnright" />
+        <!--android:text="右"-->
+
+
+    </RelativeLayout>
+
+    <!--舵机控制-->
+    <RelativeLayout
+        android:id="@+id/servoCtr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:visibility="invisible">
+
+        <Button
+            android:id="@+id/servoUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/up" />
+
+        <Button
+            android:id="@+id/servoLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/servoUp"
+            android:background="@drawable/left" />
+
+        <Button
+            android:id="@+id/servoDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/servoUp"
+            android:layout_toRightOf="@id/servoLeft"
+            android:background="@drawable/down" />
+
+        <Button
+            android:id="@+id/servoRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/servoUp"
+            android:layout_toRightOf="@id/servoDown"
+            android:background="@drawable/right" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rightbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+
+        <TextView
+            android:id="@+id/tvRightSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="右" />
+
+        <zfp.config.VerticalSeekBar
+            android:id="@+id/rightspeed"
+            android:layout_width="30.0dp"
+            android:layout_height="200dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/leftbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/tvLeftSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="左" />
+
+        <zfp.config.VerticalSeekBar
+            android:id="@+id/leftspeed"
+            android:layout_width="30.0dp"
+            android:layout_height="200dp" />
+    </LinearLayout>
+    <!--工具条-->
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
+        android:layout_toLeftOf="@id/rightbar"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/check_servo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="云台控制" />
+
+        <CheckBox
+            android:id="@+id/check_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="车速控制" />
+
+        <CheckBox
+            android:id="@+id/check_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="车灯控制" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/servo_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_toLeftOf="@id/rightbar"
+        android:text="重置方向"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/BtnTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/servo_reset"
+        android:layout_toLeftOf="@id/rightbar"
+        android:text="Test" />
+
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- 主界面 -->
+    <string name="app_name">智能小车控制系统</string>
+    <string name="headStr">智能车远程控制系统</string>
+    <string name="connStr">连接吧</string>
+    <string name="setStr">设置</string>
+    <!-- 控制界面 -->
+    <string name="btnUp">上</string>
+    <string name="btnDown">下</string>
+    <string name="btnLeft">左</string>
+    <string name="btnRight">右</string>
+    <string name="action_settings">Settings</string>
+    <!-- 连接设置界面 -->
+	<string name="settingStr">设置界面</string>
+	<string name="ctrStr">控制界面</string>
+	<string name="netSetStr">net配置</string>
+	<string name="portStr">2001</string><!-- 端口参数 -->
+	<string name="portDisStr">端口号:</string><!-- 端口配置描述文字 -->
+    <string name="testStr">测试界面</string>
+    
+</resources>
