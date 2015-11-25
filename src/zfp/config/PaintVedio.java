@@ -60,7 +60,7 @@ public class PaintVedio extends SurfaceView implements Callback, Runnable {
 //		change事件会在切换横竖屏时出现.还有初始化出现一次
 //		runFlag = true;
 //		thread = new Thread(this);
-//		thread.start();
+//		thread.resume();
 	}
 
 	@Override
@@ -102,7 +102,7 @@ public class PaintVedio extends SurfaceView implements Callback, Runnable {
 							screenHeight, true);// 把图片根据屏幕尺寸进行缩放
 					c.drawBitmap(bmp, 0, 0, null);
 
-					Thread.sleep(10);// 间隔时间,建议把这个参数放进配置里.肉眼约能分别42毫秒间隔的图像.
+					Thread.sleep(42);// 间隔时间,建议把这个参数放进配置里.肉眼约能分别42毫秒间隔的图像.
 				}
 			} catch (Exception e) {
 //				System.out.println(e.getMessage());

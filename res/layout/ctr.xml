@@ -11,11 +11,11 @@
     <!--android:layout_height="fill_parent" />-->
 
     <!--<RadioButton-->
-        <!--android:id="@+id/radioConn"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="16dp"-->
-        <!--android:text="连接" />-->
+    <!--android:id="@+id/radioConn"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="16dp"-->
+    <!--android:text="连接" />-->
 
     <!--方向控制-->
     <LinearLayout
@@ -80,7 +80,8 @@
         android:layout_above="@id/moveCtr_right"
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="invisible">
 
         <Button
             android:id="@+id/servoUp"
@@ -105,7 +106,7 @@
         android:layout_above="@id/moveCtr_right"
         android:layout_marginLeft="16dp"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="invisible">
 
 
         <Button
@@ -134,9 +135,9 @@
         android:layout_margin="16dp"
         android:layout_toLeftOf="@+id/moveCtr_right"
         android:layout_toRightOf="@id/moveCtr_left"
-        android:orientation="vertical"
         android:background="#DFDFDF"
-        android:visibility="visible">
+        android:orientation="vertical"
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -145,11 +146,11 @@
             android:orientation="horizontal">
 
             <TextView
-                android:textColor="@android:color/primary_text_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
-                android:text="左" />
+                android:text="左"
+                android:textColor="@android:color/primary_text_light" />
 
             <SeekBar
                 android:id="@+id/leftspeed"
@@ -164,11 +165,11 @@
 
 
             <TextView
-                android:textColor="@android:color/primary_text_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
-                android:text="右" />
+                android:text="右"
+                android:textColor="@android:color/primary_text_light" />
 
             <SeekBar
                 android:id="@+id/rightspeed"
@@ -183,110 +184,132 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
         <CheckBox
-            android:textColor="@android:color/primary_text_light"
             android:id="@+id/check_servo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="云台" />
+            android:text="云台"
+            android:textColor="@android:color/primary_text_light" />
 
         <CheckBox
-            android:textColor="@android:color/primary_text_light"
             android:id="@+id/check_speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="车速" />
+            android:text="车速"
+            android:textColor="@android:color/primary_text_light" />
 
         <CheckBox
-            android:textColor="@android:color/primary_text_light"
             android:id="@+id/check_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="车灯" />
+            android:text="车灯"
+            android:textColor="@android:color/primary_text_light" />
+
         <CheckBox
-            android:textColor="@android:color/primary_text_light"
             android:id="@+id/check_alertLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="警戒线" />
+            android:text="警戒线"
+            android:textColor="@android:color/primary_text_light" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/statebar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp">
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
-                android:textColor="@android:color/primary_text_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="速度:"/>
+                android:text="速度:"
+                android:textColor="@android:color/primary_text_light" />
+
             <TextView
-                android:textColor="@android:color/primary_text_light"
                 android:id="@+id/state_speed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="48sp"/>
+                android:width="48sp"
+                android:textColor="@android:color/primary_text_light" />
+
             <TextView
-                android:textColor="@android:color/primary_text_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="车距:"/>
+                android:text="车距:"
+                android:textColor="@android:color/primary_text_light" />
+
             <TextView
-                android:textColor="@android:color/primary_text_light"
                 android:id="@+id/state_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="48sp"/>
+                android:width="48sp"
+                android:textColor="@android:color/primary_text_light" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
-                android:textColor="@android:color/primary_text_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="温度:"/>
+                android:text="温度:"
+                android:textColor="@android:color/primary_text_light" />
+
             <TextView
-                android:textColor="@android:color/primary_text_light"
                 android:id="@+id/state_tempreture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="48sp"/>
+                android:width="48sp"
+                android:textColor="@android:color/primary_text_light" />
+
             <TextView
-                android:textColor="@android:color/primary_text_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="湿度:"/>
+                android:text="湿度:"
+                android:textColor="@android:color/primary_text_light" />
+
             <TextView
-                android:textColor="@android:color/primary_text_light"
                 android:id="@+id/state_wet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:width="48sp"/>
+                android:width="48sp"
+                android:textColor="@android:color/primary_text_light" />
         </LinearLayout>
 
     </LinearLayout>
 
     <SurfaceView
+        android:id="@+id/surfaceView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/speedBar"
         android:layout_below="@id/statebar"
-        android:layout_toRightOf="@id/servoCtr_left"
-        android:layout_toLeftOf="@id/servoCtr_right"/>
+        android:layout_toLeftOf="@id/servoCtr_right"
+        android:layout_toRightOf="@id/servoCtr_left" />
 
+    <ImageView
+        android:id="@+id/alertline"
+        android:layout_width="wrap_content"
+        android:layout_height="100sp"
+        android:layout_alignBottom="@id/surfaceView"
+        android:layout_alignLeft="@id/surfaceView"
+        android:layout_alignRight="@id/surfaceView"
+        android:background="@drawable/alertline"
+        android:visibility="gone"/>
 
 
 </RelativeLayout>
