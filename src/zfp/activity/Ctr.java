@@ -7,11 +7,10 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import android.app.Activity;
 import android.os.Handler;
+import android.text.Html;
 import android.view.*;
 import android.widget.*;
 import zfp.mycar.R;
-import android.annotation.SuppressLint;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 /**
@@ -19,7 +18,7 @@ import android.os.Bundle;
  *
  * @author zfp
  */
-public class Ctr extends Activity {
+public class Ctr extends Activity implements CtrView{
 
     private Socket socket = null;
     // 指令发出 数据缓存
@@ -36,6 +35,9 @@ public class Ctr extends Activity {
     private Button btnBack;//后
     private Button btnLeft;//左
     private Button btnRight;//右
+    private TextView speed,distance,tempreture,wet;
+    CtrPresent present;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +46,12 @@ public class Ctr extends Activity {
         setContentView(R.layout.ctr);
         mHandler = new Handler();
         // =========================================
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);// 横屏代码
-        // SharedPreferences sp = this.getSharedPreferences("set",
-        // MODE_PRIVATE);
 //        setBtnAffairs();
+        speed= (TextView) findViewById(R.id.state_speed);
+        distance= (TextView) findViewById(R.id.state_distance);
+        tempreture= (TextView) findViewById(R.id.state_tempreture);
+        wet= (TextView) findViewById(R.id.state_wet);
+        present=CtrPresent.get(getApplicationContext(),this);
     }
 
 
@@ -259,6 +263,7 @@ public class Ctr extends Activity {
 
     public void onDestroy() {//视频占用的资源会在退出此类时自动销毁,配置在surfaceview的子类PaintVedio中,这里只端口小车的控制连接
         super.onDestroy();
+        present.stop();
         if (isConnect) {
             isConnect = false;
             try {
@@ -271,8 +276,31 @@ public class Ctr extends Activity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            thread.interrupt();
+//            thread.interrupt();
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        present.start();
+    }
+
+    @Override
+    protected void onPause() {
+        present.pause();
+        super.onPause();
+    }
+
+    @Override
+    public void updateMessage(final String type, final String msg) {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                speed.setText(type);
+                wet.setText(Html.fromHtml(msg));
+            }
+        });
     }
 }
