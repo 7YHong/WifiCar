@@ -47,7 +47,7 @@ public class Ctr extends Activity {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);// 横屏代码
         // SharedPreferences sp = this.getSharedPreferences("set",
         // MODE_PRIVATE);
-        setBtnAffairs();
+//        setBtnAffairs();
     }
 
 
@@ -56,147 +56,147 @@ public class Ctr extends Activity {
     /**
      * 配置按钮功能
      */
-    @SuppressLint("ClickableViewAccessibility")
-    private void setBtnAffairs() {
-        // 主界面按钮
-        radioConn = (RadioButton) this.findViewById(R.id.radioConn);//点击后单选按钮后才可以控制小车
-        btnForward = (Button) this.findViewById(R.id.btnForward);
-        btnBack = (Button) this.findViewById(R.id.btnBack);
-        btnLeft = (Button) this.findViewById(R.id.btnLeft);
-        btnRight = (Button) this.findViewById(R.id.btnRight);
-        radioConn.setOnClickListener(new View.OnClickListener() {// 控制启动
-            @Override
-            public void onClick(View v) {
-                isConnect = true;
-                // 开启控制线程(注意视频连接会在进入控制界面时直接开启,这里只响应控制小车的线程)
-                thread = new Thread(runnable);
-                thread.start();
-            }
-        });
-
-        findViewById(R.id.BtnTest).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ctrOrder("r", "读取数据测试");
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        int msg;
-                        try {
-                            msg = bufferedReader.read();
-                            System.out.println("收到" + String.valueOf(msg));
-                        } catch (Exception e) {
-                            System.out.println("没有收到东西");
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        });
-
-        //运动控制部分
-        btnForward.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                touchHandle(event, "a", "前");
-                return true;
-            }
-        });
-        btnBack.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                touchHandle(event, "b", "后");
-                return true;
-            }
-        });
-        btnLeft.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                touchHandle(event, "c", "左");
-                return true;
-            }
-        });
-        btnRight.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                touchHandle(event, "d", "右");
-                return true;
-            }
-        });
-
-        //云台控制部分
-        findViewById(R.id.servoUp).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                touchHandle(event, "k", "上");
-                return true;
-            }
-        });
-        findViewById(R.id.servoDown).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                touchHandle(event, "i", "下");
-                return true;
-            }
-        });
-        findViewById(R.id.servoLeft).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                touchHandle(event, "j", "左");
-                return true;
-            }
-        });
-        findViewById(R.id.servoRight).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                touchHandle(event, "l", "右");
-                return true;
-            }
-        });
-        findViewById(R.id.servo_reset).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                servoReset();
-            }
-        });
-
-        //功能复选框部分
-        ((CheckBox) findViewById(R.id.check_speed)).setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    findViewById(R.id.leftbar).setVisibility(View.VISIBLE);
-                    findViewById(R.id.rightbar).setVisibility(View.VISIBLE);
-                } else {
-                    findViewById(R.id.leftbar).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.rightbar).setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-        ((CheckBox) findViewById(R.id.check_light)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    ctrOrder("n", "开灯");
-                } else {
-                    ctrOrder("m", "关灯");
-                }
-            }
-        });
-        ((CheckBox) findViewById(R.id.check_servo)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    findViewById(R.id.servoCtr).setVisibility(View.VISIBLE);
-                    findViewById(R.id.servo_reset).setVisibility(View.VISIBLE);
-                } else {
-                    servoReset();
-                    findViewById(R.id.servoCtr).setVisibility(View.INVISIBLE);
-                    findViewById(R.id.servo_reset).setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-    }
+//    @SuppressLint("ClickableViewAccessibility")
+//    private void setBtnAffairs() {
+//        // 主界面按钮
+//        radioConn = (RadioButton) this.findViewById(R.id.radioConn);//点击后单选按钮后才可以控制小车
+//        btnForward = (Button) this.findViewById(R.id.moveForward);
+//        btnBack = (Button) this.findViewById(R.id.moveBack);
+//        btnLeft = (Button) this.findViewById(R.id.moveLeft);
+//        btnRight = (Button) this.findViewById(R.id.moveRight);
+//        radioConn.setOnClickListener(new View.OnClickListener() {// 控制启动
+//            @Override
+//            public void onClick(View v) {
+//                isConnect = true;
+//                // 开启控制线程(注意视频连接会在进入控制界面时直接开启,这里只响应控制小车的线程)
+//                thread = new Thread(runnable);
+//                thread.start();
+//            }
+//        });
+//
+//        findViewById(R.id.BtnTest).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ctrOrder("r", "读取数据测试");
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        int msg;
+//                        try {
+//                            msg = bufferedReader.read();
+//                            System.out.println("收到" + String.valueOf(msg));
+//                        } catch (Exception e) {
+//                            System.out.println("没有收到东西");
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+//            }
+//        });
+//
+//        //运动控制部分
+//        btnForward.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                touchHandle(event, "a", "前");
+//                return true;
+//            }
+//        });
+//        btnBack.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                touchHandle(event, "b", "后");
+//                return true;
+//            }
+//        });
+//        btnLeft.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                touchHandle(event, "c", "左");
+//                return true;
+//            }
+//        });
+//        btnRight.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                touchHandle(event, "d", "右");
+//                return true;
+//            }
+//        });
+//
+//        //云台控制部分
+//        findViewById(R.id.servoUp).setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                touchHandle(event, "k", "上");
+//                return true;
+//            }
+//        });
+//        findViewById(R.id.servoDown).setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                touchHandle(event, "i", "下");
+//                return true;
+//            }
+//        });
+//        findViewById(R.id.servoLeft).setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                touchHandle(event, "j", "左");
+//                return true;
+//            }
+//        });
+//        findViewById(R.id.servoRight).setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                touchHandle(event, "l", "右");
+//                return true;
+//            }
+//        });
+//        findViewById(R.id.servo_reset).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                servoReset();
+//            }
+//        });
+//
+//        //功能复选框部分
+//        ((CheckBox) findViewById(R.id.check_speed)).setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+//                    findViewById(R.id.leftbar).setVisibility(View.VISIBLE);
+//                    findViewById(R.id.rightbar).setVisibility(View.VISIBLE);
+//                } else {
+//                    findViewById(R.id.leftbar).setVisibility(View.INVISIBLE);
+//                    findViewById(R.id.rightbar).setVisibility(View.INVISIBLE);
+//                }
+//            }
+//        });
+//        ((CheckBox) findViewById(R.id.check_light)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+//                    ctrOrder("n", "开灯");
+//                } else {
+//                    ctrOrder("m", "关灯");
+//                }
+//            }
+//        });
+//        ((CheckBox) findViewById(R.id.check_servo)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+//                    findViewById(R.id.servoCtr).setVisibility(View.VISIBLE);
+//                    findViewById(R.id.servo_reset).setVisibility(View.VISIBLE);
+//                } else {
+//                    servoReset();
+//                    findViewById(R.id.servoCtr).setVisibility(View.INVISIBLE);
+//                    findViewById(R.id.servo_reset).setVisibility(View.INVISIBLE);
+//                }
+//            }
+//        });
+//    }
 
     private void servoReset() {
         ctrOrder("q", "云台归位");

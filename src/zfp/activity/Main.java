@@ -11,72 +11,58 @@ import android.view.Window;
 import android.widget.Button;
 import zfp.mycar.R;
 
-/**½ø³ÌĞòºóµÚÒ»¸ö·ÃÎÊµÄÀà,Èı¸öÑ¡Ïî.ÅäÖÃ,²âÊÔºÍÁ¬½Ó
+/**è¿›ç¨‹åºåç¬¬ä¸€ä¸ªè®¿é—®çš„ç±»,ä¸‰ä¸ªé€‰é¡¹.é…ç½®,æµ‹è¯•å’Œè¿æ¥
  * @author zfp
  *
  */
 public class Main extends Activity {
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.main);
 		//=========================================
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//ºáÆÁ´úÂë		
-		setMainBtnAffairs();//ÅäÖÃ°´Å¥¹¦ÄÜ
-//		loadActivity(Main.this, Set.class);//ÔØÈësetµÄActivity-½ö²âÊÔ
-//		loadActivity(Main.this, Ctr.class);//ÔØÈëctrµÄActivity-½ö²âÊÔ
-//		loadActivity(Main.this, TestAct.class);//ÔØÈëĞÂµÄActivity-½ö²âÊÔ
+		setMainBtnAffairs();//é…ç½®æŒ‰é’®åŠŸèƒ½
+//		loadActivity(Main.this, Set.class);//è½½å…¥setçš„Activity-ä»…æµ‹è¯•
+//		loadActivity(Main.this, Ctr.class);//è½½å…¥ctrçš„Activity-ä»…æµ‹è¯•
+//		loadActivity(Main.this, TestAct.class);//è½½å…¥æ–°çš„Activity-ä»…æµ‹è¯•
 	}
 
 	//================================================================================
 
 
-	/**ÔØÈëÆäËûActivityµÄÍ¨ÓÃ·½·¨
-	 * @param context µ±Ç°ÉÏÏÂÎÄ
-	 * @param c ÒªÌø×ªµ½ÄÄ¸öActivityÀà
+	/**è½½å…¥å…¶ä»–Activityçš„é€šç”¨æ–¹æ³•
+	 * @param context å½“å‰ä¸Šä¸‹æ–‡
+	 * @param c è¦è·³è½¬åˆ°å“ªä¸ªActivityç±»
 	 */
 	private void loadActivity(Context context,Class<?> c){
 		Intent intent=new Intent();
 		intent.setClass(context,c);
 		startActivity(intent);
-		overridePendingTransition(R.anim.bottom_in,R.anim.bottom_out); //Ëæ±ã¼ÓµÄÇĞ»»Ğ§¹û.ÇëÎŞÊÓËü
+		overridePendingTransition(R.anim.bottom_in,R.anim.bottom_out); //éšä¾¿åŠ çš„åˆ‡æ¢æ•ˆæœ.è¯·æ— è§†å®ƒ
 	}
 
-	
+
 	/**
-	 * ÅäÖÃ°´Å¥¹¦ÄÜ
+	 * é…ç½®æŒ‰é’®åŠŸèƒ½
 	 */
 	private void setMainBtnAffairs() {
-		// Ö÷½çÃæ°´Å¥
-		final Button btnConn = (Button) this.findViewById(R.id.btnConn);//½øÈë¿ØÖÆĞ¡³µ½çÃæµÄ°´Å¥
-		final Button btnSet = (Button) this.findViewById(R.id.btnSet);//½øÈëÅäÖÃ
-		//final ImageButton imageButtonTest = (ImageButton) this.findViewById(R.id.imageButtonTest);//½øÈë²âÊÔ
-		btnConn.setOnClickListener(new OnClickListener() {
+		// ä¸»ç•Œé¢æŒ‰é’®
+		findViewById(R.id.btnConn).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				loadActivity(Main.this, Ctr.class);//ÔØÈë¿ØÖÆĞ¡³µ½çÃæ
+				loadActivity(Main.this, Ctr.class);//è½½å…¥æ§åˆ¶å°è½¦ç•Œé¢
 			}
 		});
-		btnSet.setOnClickListener(new OnClickListener() {
+		findViewById(R.id.btnSet).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				loadActivity(Main.this, Set.class);//ÔØÈëÅäÖÃ½çÃæ,×¢ÒâÅäÖÃ½çÃæÃ»ÓĞĞ´ºÃ.
-				
+				loadActivity(Main.this, Set.class);//è½½å…¥é…ç½®ç•Œé¢,æ³¨æ„é…ç½®ç•Œé¢æ²¡æœ‰å†™å¥½.
+
 			}
 		});
-		
-		/*imageButtonTest.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				loadActivity(Main.this, TestAct.class);//ÔØÈë²âÊÔ½çÃæ
-			}
-		});*/
-		
-		
-		
 	}
-	
-	
+
+
 }

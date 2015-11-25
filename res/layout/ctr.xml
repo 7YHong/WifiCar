@@ -2,200 +2,291 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EDEDED"
     tools:context="zfp.activity.c">
 
-    <zfp.config.PaintVedio
-        android:id="@+id/paintVedio"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+    <!--<zfp.config.PaintVedio-->
+    <!--android:id="@+id/paintVedio"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent" />-->
 
-    <RadioButton
-        android:id="@+id/radioConn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="连接" />
+    <!--<RadioButton-->
+        <!--android:id="@+id/radioConn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="16dp"-->
+        <!--android:text="连接" />-->
 
     <!--方向控制-->
-    <RelativeLayout
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp">
-
-        <Button
-            android:id="@+id/btnForward"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/forward" />
-        <!--android:text="前"-->
-
-        <Button
-            android:id="@+id/btnLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnForward"
-            android:background="@drawable/turnleft" />
-        <!--android:text="左"-->
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnForward"
-            android:layout_toRightOf="@+id/btnLeft"
-            android:background="@drawable/back" />
-        <!--android:text="后"-->
-
-
-        <Button
-            android:id="@+id/btnRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnForward"
-            android:layout_toRightOf="@+id/btnBack"
-            android:background="@drawable/turnright" />
-        <!--android:text="右"-->
-
-
-    </RelativeLayout>
-
-    <!--舵机控制-->
-    <RelativeLayout
-        android:id="@+id/servoCtr"
+    <LinearLayout
+        android:id="@+id/moveCtr_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
-        android:visibility="invisible">
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/moveForward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/forward" />
+        <!--android:text="前"-->
+
+
+        <Button
+            android:id="@+id/moveBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back" />
+        <!--android:text="后"-->
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/moveCtr_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/moveLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/moveForward"
+            android:background="@drawable/turnleft" />
+        <!--android:text="左"-->
+        <Button
+            android:id="@+id/moveRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/moveForward"
+            android:layout_toRightOf="@+id/moveBack"
+            android:background="@drawable/turnright" />
+        <!--android:text="右"-->
+    </LinearLayout>
+
+    <!--舵机控制-->
+    <LinearLayout
+        android:id="@+id/servoCtr_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/moveCtr_right"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/servoUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentRight="true"
             android:background="@drawable/up" />
-
-        <Button
-            android:id="@+id/servoLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/servoUp"
-            android:background="@drawable/left" />
 
         <Button
             android:id="@+id/servoDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_below="@id/servoUp"
-            android:layout_toRightOf="@id/servoLeft"
             android:background="@drawable/down" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/servoCtr_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/moveCtr_right"
+        android:layout_marginLeft="16dp"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+
+        <Button
+            android:id="@+id/servoLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/left" />
+
 
         <Button
             android:id="@+id/servoRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/servoUp"
-            android:layout_toRightOf="@id/servoDown"
             android:background="@drawable/right" />
 
 
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/rightbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        android:visibility="invisible">
-
-
-        <TextView
-            android:id="@+id/tvRightSpeed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="右" />
-
-        <zfp.config.VerticalSeekBar
-            android:id="@+id/rightspeed"
-            android:layout_width="30.0dp"
-            android:layout_height="200dp" />
     </LinearLayout>
 
+    <!--速度控制条-->
     <LinearLayout
-        android:id="@+id/leftbar"
+        android:id="@+id/speedBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
+        android:layout_toLeftOf="@+id/moveCtr_right"
+        android:layout_toRightOf="@id/moveCtr_left"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:background="#DFDFDF"
+        android:visibility="visible">
 
-        <TextView
-            android:id="@+id/tvLeftSpeed"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="左" />
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
 
-        <zfp.config.VerticalSeekBar
-            android:id="@+id/leftspeed"
-            android:layout_width="30.0dp"
-            android:layout_height="200dp" />
+            <TextView
+                android:textColor="@android:color/primary_text_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="左" />
+
+            <SeekBar
+                android:id="@+id/leftspeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:textColor="@android:color/primary_text_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:text="右" />
+
+            <SeekBar
+                android:id="@+id/rightspeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
+
     <!--工具条-->
     <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16sp"
-        android:layout_toLeftOf="@id/rightbar"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
         android:orientation="horizontal">
 
         <CheckBox
+            android:textColor="@android:color/primary_text_light"
             android:id="@+id/check_servo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="云台控制" />
+            android:text="云台" />
 
         <CheckBox
+            android:textColor="@android:color/primary_text_light"
             android:id="@+id/check_speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="车速控制" />
+            android:text="车速" />
 
         <CheckBox
+            android:textColor="@android:color/primary_text_light"
             android:id="@+id/check_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="车灯控制" />
+            android:text="车灯" />
+        <CheckBox
+            android:textColor="@android:color/primary_text_light"
+            android:id="@+id/check_alertLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="警戒线" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/statebar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:textColor="@android:color/primary_text_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="速度:"/>
+            <TextView
+                android:textColor="@android:color/primary_text_light"
+                android:id="@+id/state_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="48sp"/>
+            <TextView
+                android:textColor="@android:color/primary_text_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车距:"/>
+            <TextView
+                android:textColor="@android:color/primary_text_light"
+                android:id="@+id/state_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="48sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:textColor="@android:color/primary_text_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="温度:"/>
+            <TextView
+                android:textColor="@android:color/primary_text_light"
+                android:id="@+id/state_tempreture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="48sp"/>
+            <TextView
+                android:textColor="@android:color/primary_text_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="湿度:"/>
+            <TextView
+                android:textColor="@android:color/primary_text_light"
+                android:id="@+id/state_wet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="48sp"/>
+        </LinearLayout>
+
     </LinearLayout>
 
-
-    <Button
-        android:id="@+id/servo_reset"
+    <SurfaceView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
-        android:layout_toLeftOf="@id/rightbar"
-        android:text="重置方向"
-        android:visibility="invisible" />
+        android:layout_above="@+id/speedBar"
+        android:layout_below="@id/statebar"
+        android:layout_toRightOf="@id/servoCtr_left"
+        android:layout_toLeftOf="@id/servoCtr_right"/>
 
-    <Button
-        android:id="@+id/BtnTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/servo_reset"
-        android:layout_toLeftOf="@id/rightbar"
-        android:text="Test" />
 
 
 </RelativeLayout>
